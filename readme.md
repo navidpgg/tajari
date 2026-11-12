@@ -1,4 +1,12 @@
 ## پروژه ۱
+
+run:
+```
+git clone https://github.com/navidpgg/tajari.git ./navid/
+cd ./navid/
+python interactive.py
+```
+
 تبدیل nfaبه dfa:
 
 `python verify_nfa_dfa_conversion.py`
