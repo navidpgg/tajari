@@ -1,0 +1,16 @@
+{
+    "states":["S","P","X","D","S1","S2"],
+    "alphabet":["a","b"],
+    "startState":"S",
+    "endStates":["S1","S2"],
+    "transitionTable":[
+        ["S","b","P"],
+        ["P","a","X"],
+        ["P","a","S2"],
+        ["X","b","S1"],
+        ["S1","a","D"],
+        ["D","b","S1"],
+        ["S2","a","S2"],
+        ["S1","_","S2"]
+    ]
+}
