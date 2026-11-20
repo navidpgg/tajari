@@ -1,4 +1,4 @@
-import json
+import json,tempfile
 
 class Machine:
     def __init__(self,filepath):
@@ -107,3 +107,19 @@ class Machine:
         with open(filepath, 'w') as f:
             json.dump(dfa, f, indent=2)
         return dfa
+
+    def print_regular_grammar(self):
+        dfa=self.to_dfa('_temp.json')
+        m_dfa=Machine('_temp.json')
+        for currentstate,yields in m_dfa.s2s.items():
+            print(currentstate,'->',end=' ')
+            for letter,nextstates in yields.items():
+                assert len(nextstates)==1
+                ns=nextstates[0]
+                assert letter in m_dfa.alphabet
+                assert currentstate in m_dfa.states and ns in m_dfa.states
+                print(f'{letter}{ns}',end='|')
+            if currentstate in m_dfa.endStates:
+                print('λ')
+            else:
+                print('\b ') # move cursor backwards replace with space 
